@@ -11,6 +11,12 @@ namespace AboutLearningNinjectMVC4.Controllers
     {
         private readonly IDrugs _drugs;
 
+        public MensageiroController()
+            : this(new DrugDealer())
+        {
+
+        }
+
         public MensageiroController(IDrugs drugs)
         {
             _drugs = drugs;
@@ -18,7 +24,7 @@ namespace AboutLearningNinjectMVC4.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Message = "Olá mundo.";
+            ViewBag.Message = _drugs.Use("Cocaine");
             return View();
         }
 

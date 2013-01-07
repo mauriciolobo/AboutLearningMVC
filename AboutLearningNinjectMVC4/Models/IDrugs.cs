@@ -2,6 +2,6 @@
 {
     public interface IDrugs
     {
-         
+        string Use(string which);
     }
 }
