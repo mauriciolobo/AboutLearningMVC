@@ -1,3 +1,5 @@
+using AboutLearningNinjectMVC4.Models;
+
 [assembly: WebActivator.PreApplicationStartMethod(typeof(AboutLearningNinjectMVC4.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(AboutLearningNinjectMVC4.App_Start.NinjectWebCommon), "Stop")]
 
@@ -53,6 +55,7 @@ namespace AboutLearningNinjectMVC4.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IDrugs>().To<DrugDealer>();
         }        
     }
 }

@@ -10,13 +10,7 @@ namespace AboutLearningNinjectMVC4.Controllers
     public class MensageiroController : Controller
     {
         private readonly IDrugs _drugs;
-
-        public MensageiroController()
-            : this(new DrugDealer())
-        {
-
-        }
-
+        
         public MensageiroController(IDrugs drugs)
         {
             _drugs = drugs;
