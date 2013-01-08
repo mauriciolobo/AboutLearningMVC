@@ -1,11 +1,12 @@
-﻿@{
+﻿@using AboutCustomLogin.Models
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 @if (User.Identity.IsAuthenticated)
 {
-    <h1>Olá @User.Identity.Name</h1>
+    <h1>Olá @UserContext.Current.Person.Name</h1>
     <p>@Html.ActionLink("Sair", "Logout")</p>
 }
 else
@@ -22,9 +23,12 @@ else
 }
 <small>Message: @if (ViewBag.Message == null)
                 {
-                    <span>Nenhuma mensagem.</span>
+    <span>Nenhuma mensagem.</span>
                 }
                 else
                 {
-                    <span>@ViewBag.Message</span>
+    <span>@ViewBag.Message</span>
                 }</small>
+<h4>@Html.ValidationSummary()</h4>
+<hr />
+<small>What is the User NAME: @User.Identity.Name</small>

@@ -4,14 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AboutCustomLogin.Models;
 
 namespace AboutCustomLogin.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
-
         public ActionResult Index()
         {
             return View();
@@ -26,8 +24,13 @@ namespace AboutCustomLogin.Controllers
         [HttpPost]
         public ActionResult Index(string username)
         {
-            FormsAuthentication.SetAuthCookie(username, false);
-            return RedirectToAction("Index");
-        }
+            if (Person.Validate(username))
+            {
+                FormsAuthentication.SetAuthCookie(username, false);
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("","Usuário não encontrado.");
+            return View();
+        }        
     }
 }
