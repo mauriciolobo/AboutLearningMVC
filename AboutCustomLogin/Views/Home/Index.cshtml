@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Olá @User.Identity.Name</h1>
+    <p>@Html.ActionLink("Sair", "Logout")</p>
+}
+else
+{
+    using (Html.BeginForm())
+    {        
+    <fieldset>
+        <legend>Login</legend>
+        <p>Username:<input type="text" name="Username" /></p>
+        <p>Password:<input type="password" name="Password" /></p>
+        <button type="submit">Login</button>
+    </fieldset>
+    }
+}
+<small>Message: @if (ViewBag.Message == null)
+                {
+                    <span>Nenhuma mensagem.</span>
+                }
+                else
+                {
+                    <span>@ViewBag.Message</span>
+                }</small>
