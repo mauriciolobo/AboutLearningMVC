@@ -1,5 +1,17 @@
-﻿@{
+﻿@model AboutNinjectManually.Models.IDrugDealer
+
+@{
     ViewBag.Title = "Index";
 }
 
 <h2>Starting Ninject Manually</h2>
+<hr />
+<h3>@Model.Name has:</h3>
+<ul>
+    @foreach (var drug in Model.Drugs)
+    {
+        <li>
+            <h4>@drug</h4>
+        </li>
+    }
+</ul>

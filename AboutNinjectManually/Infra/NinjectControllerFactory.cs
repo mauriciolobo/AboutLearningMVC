@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
+using AboutNinjectManually.Models;
 using Ninject;
 
 namespace AboutNinjectManually.Infra
@@ -17,7 +18,7 @@ namespace AboutNinjectManually.Infra
 
         private void AddBindings()
         {
-            
+            kernel.Bind<IDrugDealer>().To<PabloEscobar>();
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, System.Type controllerType)
